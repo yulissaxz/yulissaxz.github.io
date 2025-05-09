@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="INICIO.css">
+</head>
+<body bgcolor="pink">
+<ul>
+<li><a href="mipaginaweb.html">Inicio 📍</a></li>
+<li><a href="PRODUCTOS.html">Productos🛒</a></li>
+<li><a href="CONTACTO.html">Contacto&#9742;</a></li>
+
+<button href="mipaginaweb.html">Inicio</button>
+
+<h3>POLVO TRASLUCIDO PINK UP DISTINTOS COLORES, EFECTO FILTRO Y DURADERO.</h3>
+<p>$110.00</p>
+<img src="polvos.jpg">
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Pago</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #saddlebrown;
+      padding: 40px;
+    }
+    .form-container {
+      max-width: 400px;
+      background-color: grey;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: auto;
+    }
+    input[type="text"], input[type="email"], input[type="number"], input[type="month"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    button:hover {
+      background-color:darkblue;
+    }
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Formulario de Pago</h2>
+    <form onsubmit="return procesarPago()">
+      <label>Nombre Completo</label>
+      <input type="text" required placeholder="Juan Pérez">
+
+      <label>Correo Electrónico</label>
+      <input type="email" required placeholder="juan@email.com">
+
+      <label>Número de Tarjeta</label>
+      <input type="text" required maxlength="16" placeholder="1234 5678 9012 3456">
+
+      <label>Fecha de Expiración</label>
+      <input type="month" required>
+
+      <label>Direccion de domicilio</label>
+      <input type="text" required placeholder="Tijuana, Laurel ll">
+
+
+      <label>CVV</label>
+      <input type="number" required maxlength="4" placeholder="123">
+
+      <button type="submit">Comprar</button>
+    </form>
+  </div>
+
+  <script>
+    function procesarPago() {
+      alert("Pago procesado con éxito. ¡Gracias por su compra!");
+      return false; // Evita que la página se recargue (simulación)
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+</body>
+</html>
+
+</ul>
