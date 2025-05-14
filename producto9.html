@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Polvo Compacto Blur Sin Color Italia Delux | Cosmetic's Yulissa</title>
+
+  <!-- Estilos mejorados -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ffe4ec;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #5e3a3a;
+    }
+
+    nav {
+      background-color: #f8c3c3;
+      padding: 15px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #5e3a3a;
+      font-size: 1.1rem;
+    }
+
+    #carrito-btn {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      background-color: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    #carrito-btn span {
+      background-color: #c74f78;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.8rem;
+      position: relative;
+      top: -10px;
+      left: -10px;
+    }
+
+    .producto-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .producto-container h2 {
+      font-size: 2rem;
+      color: #c74f78;
+      margin-bottom: 15px;
+    }
+
+    .producto-container p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .producto-container img {
+      width: 300px;
+      border-radius: 10px;
+      margin: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 30px;
+      background-color: #c74f78;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      text-decoration: none;
+      margin: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #a64064;
+    }
+
+    footer {
+      background-color: #f8c3c3;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #5e3a3a;
+      margin-top: 40px;
+    }
+
+    #carrito-detalle {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 300px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    #carrito-detalle h2 {
+      margin-top: 0;
+    }
+
+    #carrito-detalle ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #carrito-detalle li {
+      margin-bottom: 10px;
+    }
+
+    #carrito-detalle p {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menú de navegación -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio 📍</a></li>
+      <li><a href="PRODUCTOS.html">Productos 🛒</a></li>
+      <li><a href="CONTACTO.html">Contacto ☎️</a></li>
+    </ul>
+    <button id="carrito-btn" onclick="toggleCarrito()">🛒<span id="contador-carrito">0</span></button>
+    <div id="carrito-detalle">
+      <h2>Carrito de compras</h2>
+      <ul id="lista-carrito"></ul>
+      <p>Total: $<span id="total">0</span> MXN</p>
+      <button class="btn" onclick="vaciarCarrito()">Vaciar carrito</button>
+      <button class="btn" onclick="pagar()">Pagar</button>
+    </div>
+  </nav>
+
+  <!-- Contenido del producto -->
+  <div class="producto-container">
+    <h2>Polvo Compacto Blur Sin Color Italia Delux</h2>
+    <p>Un polvo compacto ideal para un acabado suave, mate y duradero. Perfecto para el control del brillo y difuminar imperfecciones.</p>
+    <p><strong>Precio: $100.00 MXN</strong></p>
+    <img src="blur.jpg" alt="Polvo Compacto Blur Sin Color Italia Delux">
+
+    <button class="btn" onclick="agregarAlCarrito('Polvo Compacto Blur Sin Color Italia Delux', 100)">Agregar al carrito</button>
+    <a href="PRODUCTOS.html" class="btn">Volver al catálogo</a>
+  </div>
+
+  <!-- Pie de página -->
+  <footer>
+    &copy; 2025 COSMETIC'S YULISSA — ¡Brilla con tu belleza natural! ✨
+  </footer>
+
+  <script>
+    let carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById('lista-carrito');
+      const total = document.getElementById('total');
+      const contador = document.getElementById('contador-carrito');
+      const carritoDiv = document.getElementById('carrito-detalle');
+      lista.innerHTML = '';
+      let totalPrecio = 0;
+      carrito.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nombre} - $${item.precio} MXN`;
+        lista.appendChild(li);
+        totalPrecio += item.precio;
+      });
+      total.textContent = totalPrecio;
+      contador.textContent = carrito.length;
+      carritoDiv.style.display = carrito.length > 0 ? 'block' : 'none';
+    }
+
+    function vaciarCarrito() {
+      carrito = [];
+      actualizarCarrito();
+    }
+
+    function pagar() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+      } else {
+        alert("Gracias por tu compra 💕");
+        vaciarCarrito();
+      }
+    }
+
+    function toggleCarrito() {
+      const detalle = document.getElementById('carrito-detalle');
+      if (detalle.style.display === 'none' || detalle.style.display === '') {
+        detalle.style.display = 'block';
+      } else {
+        detalle.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>

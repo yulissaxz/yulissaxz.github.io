@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Corrector en Bálsamo Matte</title>
+  <link rel="stylesheet" type="text/css" href="INICIO.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe4ec;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #f8c3c3;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #5e3a3a;
+      font-size: 1.2rem;
+    }
+
+    nav a:hover {
+      color: #c74f78;
+    }
+
+    .producto-container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .producto-container h3 {
+      color: #c74f78;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .producto-container p {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .producto-container img {
+      width: 300px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: #c74f78;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      margin-top: 25px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #a64064;
+    }
+
+    footer {
+      background-color: #f8c3c3;
+      padding: 15px;
+      text-align: center;
+      color: #5e3a3a;
+      font-size: 0.9rem;
+    }
+
+    /* Carrito flotante */
+    #carrito-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    #carrito-btn span {
+      background-color: #c74f78;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.8rem;
+      position: relative;
+      top: -10px;
+      left: -10px;
+    }
+
+    #carrito-detalle {
+      display: none;
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 300px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 998;
+    }
+
+    #carrito-detalle ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #carrito-detalle li {
+      margin-bottom: 10px;
+    }
+
+    #carrito-detalle h2, #carrito-detalle p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Botón carrito -->
+<button id="carrito-btn" onclick="toggleCarrito()">🛒<span id="contador-carrito">0</span></button>
+
+<!-- Detalles del carrito -->
+<div id="carrito-detalle">
+  <h2>Carrito de compras</h2>
+  <ul id="lista-carrito"></ul>
+  <p>Total: $<span id="total">0</span> MXN</p>
+  <button class="btn" onclick="vaciarCarrito()">Vaciar carrito</button>
+  <button class="btn" onclick="pagar()">Pagar</button>
+</div>
+
+<!-- Navegación -->
+<nav>
+  <ul>
+    <li><a href="index.html">Inicio 📍</a></li>
+    <li><a href="PRODUCTOS.html">Productos 🛒</a></li>
+    <li><a href="CONTACTO.html">Contacto ☎️</a></li>
+  </ul>
+</nav>
+
+<!-- Producto -->
+<div class="producto-container">
+  <h3>Corrector en Bálsamo Matte, perfecto para Piel Grasa</h3>
+  <p>Ayuda a disminuir ojeras y cuaquier imperfección, cobertura media.</p>
+  <p><strong>Precio:</strong> $60.00</p>
+  <img src="matte.jpg" alt="Corrector en Bálsamo Matte">
+
+  <div>
+    <button class="btn" onclick="agregarAlCarrito('Corrector en Bálsamo Matte', 60)">Agregar al carrito</button>
+    <a href="PRODUCTOS.html" class="btn">Volver al catálogo</a>
+  </div>
+</div>
+
+<!-- Pie de página -->
+<footer>
+  &copy; 2025 COSMETIC'S YULISSA — ¡Brilla con tu belleza natural! ✨
+</footer>
+
+<!-- Script del carrito -->
+<script>
+  let carrito = [];
+
+  function agregarAlCarrito(nombre, precio) {
+    carrito.push({ nombre, precio });
+    actualizarCarrito();
+  }
+
+  function actualizarCarrito() {
+    const lista = document.getElementById('lista-carrito');
+    const total = document.getElementById('total');
+    const contador = document.getElementById('contador-carrito');
+    lista.innerHTML = '';
+    let totalPrecio = 0;
+    carrito.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.nombre} - $${item.precio} MXN`;
+      lista.appendChild(li);
+      totalPrecio += item.precio;
+    });
+    total.textContent = totalPrecio;
+    contador.textContent = carrito.length;
+  }
+
+  function vaciarCarrito() {
+    carrito = [];
+    actualizarCarrito();
+    document.getElementById('carrito-detalle').style.display = 'none';
+  }
+
+  function pagar() {
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío.");
+    } else {
+      alert("Gracias por tu compra 💕");
+      vaciarCarrito();
+    }
+  }
+
+  function toggleCarrito() {
+    const detalle = document.getElementById('carrito-detalle');
+    detalle.style.display = (detalle.style.display === 'block') ? 'none' : 'block';
+  }
+</script>
+
+</body>
+</html>

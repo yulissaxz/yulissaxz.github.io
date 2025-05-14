@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blush Saniye | Cosmetic's Yulissa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ffe4ec;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #5e3a3a;
+    }
+
+    nav {
+      background-color: #f8c3c3;
+      padding: 15px;
+      text-align: center;
+      position: relative;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #5e3a3a;
+      font-size: 1.1rem;
+    }
+
+    #carrito-btn {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      background-color: transparent;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    #carrito-btn span {
+      background-color: #c74f78;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 0.8rem;
+      position: relative;
+      top: -10px;
+      left: -10px;
+    }
+
+    .producto-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .producto-container h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .producto-container p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .producto-container img {
+      width: 300px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px 8px 0;
+      padding: 12px 30px;
+      background-color: #d89aa3;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #ba7b86;
+    }
+
+    #carrito-detalle {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 300px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    #carrito-detalle h2 {
+      margin-top: 0;
+    }
+
+    #carrito-detalle ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #carrito-detalle li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #f8c3c3;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio 📍</a></li>
+      <li><a href="PRODUCTOS.html">Productos 🛒</a></li>
+      <li><a href="CONTACTO.html">Contacto ☎️</a></li>
+    </ul>
+    <button id="carrito-btn" onclick="toggleCarrito()">🛒<span id="contador-carrito">0</span></button>
+    <div id="carrito-detalle">
+      <h2>Carrito de compras</h2>
+      <ul id="lista-carrito"></ul>
+      <p>Total: $<span id="total">0</span> MXN</p>
+      <button class="btn" onclick="vaciarCarrito()">Vaciar carrito</button>
+      <button class="btn" onclick="pagar()">Pagar</button>
+    </div>
+  </nav>
+
+  <div class="producto-container">
+    <h2>Blush Saniye</h2>
+    <p>Rubor compacto disponible en varios tonos. Perfecto para darle color a tus mejillas con una pigmentación intensa y duradera. 💗</p>
+    <p><strong>$35.00 MXN</strong></p>
+    <img src="blushsaniye.jpg" alt="Blush Saniye">
+
+    <button class="btn" onclick="agregarAlCarrito('Blush Saniye', 35)">Agregar al carrito</button>
+    <a href="PRODUCTOS.html" class="btn">← Volver al catálogo</a>
+  </div>
+
+  <footer>
+    &copy; 2025 COSMETIC'S YULISSA | Porque cada color cuenta 💄
+  </footer>
+
+  <script>
+    let carrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById('lista-carrito');
+      const total = document.getElementById('total');
+      const contador = document.getElementById('contador-carrito');
+      lista.innerHTML = '';
+      let totalPrecio = 0;
+      carrito.forEach(item => {
+        totalPrecio += item.precio;
+        const li = document.createElement('li');
+        li.textContent = `${item.nombre} - $${item.precio} MXN`;
+        lista.appendChild(li);
+      });
+      total.textContent = totalPrecio;
+      contador.textContent = carrito.length;
+    }
+
+    function vaciarCarrito() {
+      carrito = [];
+      actualizarCarrito();
+    }
+
+    function pagar() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío. Agrega productos antes de pagar.");
+      } else {
+        window.location.href = "comprar.html";
+      }
+    }
+
+    function toggleCarrito() {
+      const detalle = document.getElementById('carrito-detalle');
+      if (detalle.style.display === 'none' || detalle.style.display === '') {
+        detalle.style.display = 'block';
+      } else {
+        detalle.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+</html>

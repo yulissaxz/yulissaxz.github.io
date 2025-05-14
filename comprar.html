@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Pago</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fef1f9; /* Fondo rosado suave */
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-container {
+      background: #fff0f6; /* Fondo más claro para el formulario */
+      max-width: 400px;
+      margin: 60px auto;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff66b2; /* Color rosita para el título */
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      margin-top: 20px;
+      color: #ff66b2;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      border: 1px solid #ff66b2;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+      background-color: #ffe6f2; /* Fondo rosado claro en los inputs */
+    }
+
+    input:focus {
+      border-color: #ff3385; /* Borde más oscuro al enfocar */
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(45deg, #ff66b2, #ff3385); /* Degradado rosado */
+      color: #fff;
+      padding: 14px;
+      border: none;
+      margin-top: 20px;
+      font-size: 16px;
+      border-radius: 50px; /* Bordes redondeados */
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #ff3385, #ff66b2); /* Invertir el degradado al pasar el cursor */
+      transform: translateY(-4px); /* Efecto de levantar el botón */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombras más intensas al hacer hover */
+    }
+
+    button:active {
+      transform: translateY(2px); /* Efecto de presionar el botón */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .icono {
+      margin-right: 6px;
+    }
+
+    .nota {
+      font-size: 13px;
+      color: #999;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    /* Estilo extra para los inputs de fecha y CVV */
+    input[type="month"], input[type="number"] {
+      background-color: #ffe6f2;
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>🌸 Formulario de Pago</h2>
+    <form onsubmit="return procesarPago()">
+      
+      <label>👤 Nombre Completo</label>
+      <input type="text" required placeholder="Sofia Mendez">
+
+      <label>💳 Número de Tarjeta</label>
+      <input type="text" required maxlength="16" placeholder="1234 5678 9012 3456">
+
+      <label>📅 Fecha de Expiración</label>
+      <input type="month" required>
+
+      <label>🏠 Dirección de Domicilio</label>
+      <input type="text" required placeholder="Tijuana, Laurel II">
+
+      <label>🔐 CVV</label>
+      <input type="number" required maxlength="4" placeholder="123">
+
+      <button type="submit">✅ Confirmar Compra</button>
+    </form>
+    <p class="nota">Tus datos están seguros 🔒</p>
+  </div>
+
+  <script>
+    function procesarPago() {
+      alert("✅ ¡Pago procesado con éxito! Gracias por tu compra, tu compra llegara proximamente o puedes recogerlas en nuestro local 😊");
+      return false; // Detiene el envío real del formulario (simulación)
+    }
+  </script>
+
+</body>
+</html>

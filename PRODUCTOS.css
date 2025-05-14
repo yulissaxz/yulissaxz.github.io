@@ -1,0 +1,94 @@
+.producto-1 img{
+   border-image-width: revert-layer;
+}
+
+.producto-1 {
+max-width: 300px;
+margin: 0;
+}
+.productos {
+padding: 10 0 80px 0;
+text-align: center;
+}
+
+.productos-container{
+margin-top: 50px;
+display: grid;
+grid-template-columns: repeat(5, 3fr);
+column-gap: 50px
+}
+
+.producto-1 {
+background color:#5F9F9F;
+padding: 20px;
+}
+
+.producto-1 h2{
+color: #532f01;
+font-size: 30px;
+margin-bottom: 1px;
+}
+.producto-1 p {
+   color: darkred;
+   margin-bottom: 10px;
+}
+ .navbar ul {
+display: flex;
+}
+  .navbar ul li a {
+font-size: 30px;
+padding: 0 30px;
+color: palevioletred;
+display: block;
+font-weight: 100;
+
+   display: inline-block;
+   padding: 10px 20px;
+   color:black;
+   background-color: palevioletred;
+   text-transform: uppercase;
+   border-radius: 20px;
+   font-size: 10px;
+}
+ .navbar ul li a:hover{
+color: red;
+}
+.menu {
+
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: indigo;
+  transition: background 1s linear;
+
+  &:hover {
+    background: hotpink;
+  }
+  
+}
+h1{
+    font-family:initial;
+color:black;
+font-size: 30px;
+font-weight: 100;
+text-transform: uppercase;
+}
+
+h2{
+
+font-family:initial;
+color:black;
+font-size: 40px;
+font-weight: 100;
+text-transform: uppercase;
+}
+
+h3{
+  font-family:initial;
+color:black;
+font-size: 20px;
+font-weight: 100;
+text-transform: uppercase;
+}

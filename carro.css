@@ -1,0 +1,71 @@
+/* Estilos para el botón flotante del carrito */
+#cart-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #c74f78;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 60px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el contenedor del carrito */
+#cart-container {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff;
+  border: 2px solid #c74f78;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+}
+
+#cart-container h3 {
+  margin-top: 0;
+  color: #c74f78;
+}
+
+#cart-container ul {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#cart-container li {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#cart-container .total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#cart-container .btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #c74f78;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#cart-container .btn:hover {
+  background-color: #a64064;
+}
